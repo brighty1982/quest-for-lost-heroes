@@ -6,15 +6,19 @@ from . import util
 #-------------------------------------------------------------------
 class character:
 
-    # primary attributes
+    
     name = "Dave"
-    wounds = 1
-    weapon_skill = 1
-    attacks = 1
-    strength = 1
-    toughness = 1
-    armour_save = 1
-    initiative = 1
+
+    # stats
+    stats = {
+        "wounds": 1,
+        "weapon_skill": 1,
+        "attacks": 1,
+        "strength": 1,
+        "toughness": 1,
+        "armour_save": 7,
+        "initiative": 1
+        }
 
     # inventory
     inventory = {}
@@ -23,7 +27,8 @@ class character:
     equiped = {
         "hand-weapon": "",
         "shield": "",
-        "special": ""}
+        "special": ""
+        }
 
     # helper functions
     #-------------------------------------------------------------------
@@ -54,37 +59,33 @@ class character:
         self.name = new_name
     # change wounds
     def change_wounds(self, number):
-        self.wounds += number
+        self.stats["wounds"] += number
     # change weapon skill
     def change_weapon_skill(self, number):
-        self.weapon_skill += number
+        self.stats["weapon_skill"] += number
     # change attacks
     def change_attacks(self, number):
-        self.attacks += number
+        self.stats["attacks"] += number
     # change strength
     def change_strength(self, number):
-        self.strength += number
+        self.stats["strength"] += number
     # change toughness
     def change_toughness(self, number):
-        self.toughness += number
+        self.stats["toughness"] += number
     # change armour_save
     def change_armour_save(self, number):
-        self.armour_save += number
+        self.stats["armour_save"] += number
     # change initiative
     def change_initiative(self, number):
-        self.initiative += number
+        self.stats["initiative"] += number
+
     # print stats
     def show_stats(self):
         util.spacer(1)
-        print("  Your Stats")
+        print("Your stats")
         util.spacer(1)
-        print("      Wounds : " + str(self.wounds))
-        print("Weapon Skill : " + str(self.weapon_skill))
-        print("     Attacks : " + str(self.attacks))
-        print("    Strength : " + str(self.strength))
-        print("   Toughness : " + str(self.toughness))
-        print(" Armour Save : " + str(self.armour_save))
-        print("  Initiative : " + str(self.initiative))
+        for key in self.stats:
+            print(key + " : " + str(self.stats[key]))
         util.spacer(1)
     #-------------------------------------------------------------------
 #-------------------------------------------------------------------
@@ -93,39 +94,45 @@ class character:
 #-------------------------------------------------------------------
 class human_warrior(character):
     type_ = "Human Warrior"
-    wounds = 3
-    weapon_skill = 3
-    attacks = 1
-    strength = 3
-    toughness = 3
-    armour_save = 6
-    initiative = 7
+    stats = {
+        "wounds": 3,
+        "weapon_skill": 3,
+        "attacks": 1,
+        "strength": 3,
+        "toughness": 3,
+        "armour_save": 6,
+        "initiative": 7
+    }
 #-------------------------------------------------------------------
 
 # dwarven smith sub class
 #-------------------------------------------------------------------
 class dwarven_smith(character):
     type_ = "Dwarven Smith"
-    wounds = 4
-    weapon_skill = 4
-    attacks = 1
-    strength = 3
-    toughness = 4
-    armour_save = 5
-    initiative = 6
+    stats = {
+        "wounds": 4,
+        "weapon_skill": 4,
+        "attacks": 1,
+        "strength": 3,
+        "toughness": 4,
+        "armour_save": 5,
+        "initiative": 6
+    }
 #-------------------------------------------------------------------
 
 # elven_archer sub class
 #-------------------------------------------------------------------
 class elven_archer(character):
     type_ = "Elven Archer"
-    wounds = 3
-    weapon_skill = 4
-    attacks = 1
-    strength = 3
-    toughness = 3
-    armour_save = 6
-    initiative = 8
+    stats = {
+        "wounds": 3,
+        "weapon_skill": 4,
+        "attacks": 1,
+        "strength": 3,
+        "toughness": 3,
+        "armour_save": 6,
+        "initiative": 8
+    }
 #-------------------------------------------------------------------
 
 # return a list of available characters
