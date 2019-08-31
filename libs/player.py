@@ -2,9 +2,11 @@
 
 from . import util
 
+# main character class
 #-------------------------------------------------------------------
 class character:
 
+    # primary attributes
     name = "Dave"
     wounds = 1
     weapon_skill = 1
@@ -13,6 +15,39 @@ class character:
     toughness = 1
     armour_save = 1
     initiative = 1
+
+    # inventory
+    inventory = {}
+
+    # currently equipement you are armed with
+    equiped = {
+        "hand-weapon": "",
+        "shield": "",
+        "special": ""}
+
+    # helper functions
+    #-------------------------------------------------------------------
+
+    # equip/unequip handweapon
+    def set_hand_weapon(self, weapon):
+        self.equiped["hand-weapon"] = weapon
+    
+     # equip/unequip shield
+    def set_shield(self, shield):
+        self.equiped["shield"] = shield
+
+    # equip/unequip special
+    def set_special(self, special):
+        self.equiped["special"] = special
+
+    # show current equipment
+    def show_equipment(self):
+        util.spacer(1)
+        print("Currently Equipped")
+        util.spacer(1)
+        for key in self.equiped:
+            print(key + " : " + self.equiped[key])
+        util.spacer(1)
         
     # set or change name
     def set_name(self, new_name):
@@ -39,9 +74,10 @@ class character:
     def change_initiative(self, number):
         self.initiative += number
     # print stats
-    def print_stats(self):
+    def show_stats(self):
         util.spacer(1)
-        print("        Name : " + self.name)
+        print("  Your Stats")
+        util.spacer(1)
         print("      Wounds : " + str(self.wounds))
         print("Weapon Skill : " + str(self.weapon_skill))
         print("     Attacks : " + str(self.attacks))
@@ -50,32 +86,41 @@ class character:
         print(" Armour Save : " + str(self.armour_save))
         print("  Initiative : " + str(self.initiative))
         util.spacer(1)
+    #-------------------------------------------------------------------
+#-------------------------------------------------------------------
     
-
+# human warrior sub class
+#-------------------------------------------------------------------
 class human_warrior(character):
     type_ = "Human Warrior"
     wounds = 3
-    weapon_skill = 4
+    weapon_skill = 3
     attacks = 1
     strength = 3
     toughness = 3
-    armour_save = 5
+    armour_save = 6
     initiative = 7
+#-------------------------------------------------------------------
 
+# dwarven smith sub class
+#-------------------------------------------------------------------
 class dwarven_smith(character):
     type_ = "Dwarven Smith"
     wounds = 4
-    weapon_skill = 5
+    weapon_skill = 4
     attacks = 1
     strength = 3
     toughness = 4
-    armour_save = 4
+    armour_save = 5
     initiative = 6
+#-------------------------------------------------------------------
 
+# elven_archer sub class
+#-------------------------------------------------------------------
 class elven_archer(character):
     type_ = "Elven Archer"
     wounds = 3
-    weapon_skill = 5
+    weapon_skill = 4
     attacks = 1
     strength = 3
     toughness = 3
@@ -122,6 +167,7 @@ def set_player_name(player):
     name = input("What is your characters name? > ")
     util.check_exit_game(name)
     player.set_name(name)
+    if(player.name.lower() == "exit"): set_player_name(player)
     util.spacer(1)
     print("Your character name has been set to ** " + player.name + " **")
 #-------------------------------------------------------------------
