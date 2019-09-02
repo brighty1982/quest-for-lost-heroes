@@ -1,6 +1,7 @@
 
 from . import util
 from . import player
+from . import creatures
 import time
 
 # Intro to human warrior story line
@@ -25,7 +26,7 @@ def begin_adventure(player):
     
     print(Intro)
 
-    input("Continue [enter] >")
+    input("Continue [enter] > ")
 
     # Level 1 - Caravan attack aftermath
     level_1_caravan_aftermath(player)
@@ -67,6 +68,25 @@ def level_1_caravan_aftermath(player):
 
         if(util.get_clean_input_lower("View your equipment? [y|n] > ") in ["y","yes"]):
             player.show_equipment()
+
+        util.spacer(1)
+        print("You grasp the sword in your hand anger forcing you to stand up.")
+        print("The goblins notice you. Cautiously they creep towards you looking for a trap.")
+        print("With a shout you charge towards them...")
+
+        input("Continue [enter] > ")
+        
+        # get an enemy to fight of type goblin
+        enemy = creatures.get_creature("goblin")    
+
+        print(enemy.type_)
+        enemy.show_stats()  
+
+
+
+
+
+        
         
         
     else:

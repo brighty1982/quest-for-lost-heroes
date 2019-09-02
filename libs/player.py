@@ -5,8 +5,6 @@ from . import util
 # main character class
 #-------------------------------------------------------------------
 class character:
-
-    
     name = "Dave"
 
     # stats
