@@ -18,18 +18,53 @@ class character:
         "initiative": 1
         }
 
-    # inventory
-    inventory = {}
+    # inventory - dictionary of arrays that items can added/removed from
+    inventory = {
+        "hand-weapon": [],
+        "arnour": [],
+        "shield": [],
+        "special": []
+        }
 
-    # currently equipement you are armed with
+    # currently equipement you are armed with - dictionary of string as only one item at a time
     equiped = {
         "hand-weapon": "",
+        "armour": "",
         "shield": "",
         "special": ""
         }
 
     # helper functions
     #-------------------------------------------------------------------
+
+    # handweapon inventory
+    def add_hand_weapon_inventory(self, weapon):
+        self.inventory["hand-weapon"].append(weapon)
+    
+    def remove_hand_weapon_inventory(self, weapon):
+        self.inventory["hand-weapon"].remove(weapon)
+
+    # armour inventory
+    def add_armour_inventory(self, armour):
+        self.inventory["armour"].append(armour)
+
+    def remove_armour_inventory(self, armour):
+        self.inventory["armour"].remove(armour)
+
+    # shield inventory
+    def add_shield_inventory(self, shield):
+        self.inventory["shield"].append(shield)
+    
+    def remove_shield_inventory(self, shield):
+        self.inventory["shield"].remove(shield)
+
+    # special inventory
+    def add_special_inventory(self, special):
+        self.inventory["special"].append(special)
+
+    def remove_special_inventory(self, special):
+        self.inventory["special"].remove(special)
+    
 
     # equip/unequip handweapon
     def set_hand_weapon(self, weapon):

@@ -62,7 +62,7 @@ def level_1_caravan_aftermath(player):
         util.spacer(1)
         print("Great! 'Guard Sword' will be added to you inventory and equipped.")
 
-        player.set_hand_weapon("Guard Sword")
+        player.set_hand_weapon("Guard Sword") # equip the sword
 
         util.spacer(1)
 
