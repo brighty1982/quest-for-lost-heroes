@@ -64,19 +64,40 @@ class character:
 
     def remove_special_inventory(self, special):
         self.inventory["special"].remove(special)
+
+    # show inventory contents
+    def show_inventory(self):
+        pass #todo
     
 
     # equip/unequip handweapon
     def set_hand_weapon(self, weapon):
-        self.equiped["hand-weapon"] = weapon
+        if (self.equiped["hand-weapon"] != ""):
+            self.add_hand_weapon_inventory(self.equiped["hand-weapon"]) # put current equiped back to inventory before replacing
+            
+        self.equiped["hand-weapon"] = weapon # equip new weapon
+
+    # equip/unequip armour
+    def set_armour(self, armour):
+        if (self.equiped["armour"] != ""):
+            self.add_armour_inventory(self.equiped["armour"]) # put current equiped back to inventory before replacing
+            
+        self.equiped["armour"] = armour # equip new armour
+        
     
      # equip/unequip shield
     def set_shield(self, shield):
-        self.equiped["shield"] = shield
+        if (self.equiped["shield"] != ""):
+            self.add_shield_inventory(self.equiped["shield"]) # put current equiped back to inventory before replacing
+            
+        self.equiped["shield"] = shield # equip new shield
 
     # equip/unequip special
     def set_special(self, special):
-        self.equiped["special"] = special
+        if (self.equiped["special"] != ""):
+            self.add_special_inventory(self.equiped["special"]) # put current equiped back to inventory before replacing
+            
+        self.equiped["special"] = special # equip new special
 
     # show current equipment
     def show_equipment(self):
