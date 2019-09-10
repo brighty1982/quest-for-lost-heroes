@@ -6,6 +6,7 @@ from . import util
 #---Creatures base class---------------------------------------
 class creature:
     name = "red shirt"
+    type_ = "Unknown"
     # stats
     stats = {
         "wounds": 1,
@@ -20,10 +21,13 @@ class creature:
      # print stats
     def show_stats(self):
         util.spacer(1)
-        print("enemy stats")
+        print("Enemy Details")
+        print ("-------------------------")
+        print("Type: " + self.type_)
         util.spacer(1)
         for key in self.stats:
             print(key + " : " + str(self.stats[key]))
+        print ("-------------------------")
         util.spacer(1)
 #-------------------------------------------------------------------
 
@@ -86,19 +90,8 @@ def generate_creatures():
 def select_random_foe():
     creatures = generate_creatures()
     current_foe = random.choice(creatures)
-    print ("******************************************")
-    print ("************* Enemy Details **************")
-    print ("******************************************")
-    print ("Name: " + current_foe.name)
-    print ("Wounds: " + str(current_foe.wounds))
-    print ("Weapon skill: " + str(current_foe.weapon_skill))
-    print ("Attacks: " + str(current_foe.attacks))
-    print ("Strength: " + str(current_foe.strength))
-    print ("Toughness: " + str(current_foe.toughness))
-    print ("Armour Save: " + str(current_foe.armour_save))
-    print ("Initiative: " + str(current_foe.inititiave))
-    print ("******************************************")
-    print ("")
+    current_foe.show_stats()
+    util.spacer(1)
     print ("Get ready to fight!")
     return current_foe
 #-------------------------------------------------------------------

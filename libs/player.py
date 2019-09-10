@@ -21,15 +21,15 @@ class character:
     # inventory - dictionary of arrays that items can added/removed from
     inventory = {
         "hand-weapon": [],
-        "arnour": [],
+        "armour": [],
         "shield": [],
         "special": []
         }
 
     # currently equipement you are armed with - dictionary of string as only one item at a time
     equiped = {
-        "hand-weapon": "",
-        "armour": "",
+        "hand-weapon": "Knife",
+        "armour": "Leather Jerkin",
         "shield": "",
         "special": ""
         }
@@ -68,6 +68,15 @@ class character:
     # show inventory contents
     def show_inventory(self):
         pass #todo
+        util.spacer(1)
+        print("Inventory")
+        print ("-------------------------")
+        for key in self.inventory:  # inventory types
+            print(key + " : ")
+            for key1 in self.inventory[key]: # inventory items
+                print(" - " + key1)
+        print ("-------------------------")
+        util.spacer(1)
     
 
     # equip/unequip handweapon
@@ -103,9 +112,10 @@ class character:
     def show_equipment(self):
         util.spacer(1)
         print("Currently Equipped")
-        util.spacer(1)
+        print ("-------------------------")
         for key in self.equiped:
             print(key + " : " + self.equiped[key])
+        print ("-------------------------")
         util.spacer(1)
         
     # set or change name

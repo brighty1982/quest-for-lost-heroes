@@ -62,12 +62,18 @@ def level_1_caravan_aftermath(player):
         util.spacer(1)
         print("Great! 'Guard Sword' will be added to you inventory and equipped.")
 
+        player.show_inventory()
+
+
         player.set_hand_weapon("Guard Sword") # equip the sword
 
         util.spacer(1)
 
         if(util.get_clean_input_lower("View your equipment? [y|n] > ") in ["y","yes"]):
             player.show_equipment()
+            input("Continue [enter] >")
+
+        player.show_inventory()
 
         util.spacer(1)
         print("You grasp the sword in your hand anger forcing you to stand up.")
@@ -79,7 +85,7 @@ def level_1_caravan_aftermath(player):
         # get an enemy to fight of type goblin
         enemy = creatures.get_creature("goblin")    
 
-        print(enemy.type_)
+    
         enemy.show_stats()  
 
 
