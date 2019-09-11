@@ -83,7 +83,7 @@ def level_1_caravan_aftermath(player):
         input("Continue [enter] > ")
         
         # get an enemy to fight of type goblin
-        enemy = creatures.get_creature("goblin")    
+        enemy = creatures.get_foe("goblin")    
 
     
         enemy.show_stats()  

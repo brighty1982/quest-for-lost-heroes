@@ -36,7 +36,7 @@ def main():
 
     player_character.show_stats()
 
-    input("Continue [enter]>")
+    input("Continue [enter] >")
 
     start_adventure(player_character)   # begin your quest!
 #-------------------------------------------------------------------
