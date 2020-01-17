@@ -80,7 +80,7 @@ class black_orc(creature):
 
 # return a list of creatures
 #-------------------------------------------------------------------
-def generate_creatures():
+def generate_foes():
     creature_list = [orc, goblin, black_orc]
     return creature_list
 #-------------------------------------------------------------------
@@ -88,7 +88,7 @@ def generate_creatures():
 # select a random foe to fight
 #-------------------------------------------------------------------
 def select_random_foe():
-    creatures = generate_creatures()
+    creatures = generate_foes()
     current_foe = random.choice(creatures)
     current_foe.show_stats()
     util.spacer(1)
@@ -98,10 +98,10 @@ def select_random_foe():
 
 # return a creature of the requested type
 #-------------------------------------------------------------------
-def get_creature(requested_creature):
+def get_foe(requested_creature):
 
     # all available creatures
-    creatures = generate_creatures()
+    creatures = generate_foes()
 
     type_list = []
     # get list of creature types
