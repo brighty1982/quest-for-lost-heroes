@@ -34,7 +34,9 @@ def main():
 
     player.set_player_name(player_character)
 
-    player_character.print_stats()
+    player_character.show_stats()
+
+    input("Continue [enter] >")
 
     start_adventure(player_character)   # begin your quest!
 #-------------------------------------------------------------------

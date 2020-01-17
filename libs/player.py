@@ -2,85 +2,201 @@
 
 from . import util
 
+# main character class
 #-------------------------------------------------------------------
 class character:
-
     name = "Dave"
-    wounds = 1
-    weapon_skill = 1
-    attacks = 1
-    strength = 1
-    toughness = 1
-    armour_save = 1
-    initiative = 1
+
+    # stats
+    stats = {
+        "wounds": 1,
+        "weapon_skill": 1,
+        "attacks": 1,
+        "strength": 1,
+        "toughness": 1,
+        "armour_save": 7,
+        "initiative": 1
+        }
+
+    # inventory - dictionary of arrays that items can added/removed from
+    inventory = {
+        "hand-weapon": [],
+        "armour": [],
+        "shield": [],
+        "special": []
+        }
+
+    # currently equipement you are armed with - dictionary of string as only one item at a time
+    equiped = {
+        "hand-weapon": "Knife",
+        "armour": "Leather Jerkin",
+        "shield": "",
+        "special": ""
+        }
+
+    # helper functions
+    #-------------------------------------------------------------------
+
+    # handweapon inventory
+    def add_hand_weapon_inventory(self, weapon):
+        self.inventory["hand-weapon"].append(weapon)
+    
+    def remove_hand_weapon_inventory(self, weapon):
+        self.inventory["hand-weapon"].remove(weapon)
+
+    # armour inventory
+    def add_armour_inventory(self, armour):
+        self.inventory["armour"].append(armour)
+
+    def remove_armour_inventory(self, armour):
+        self.inventory["armour"].remove(armour)
+
+    # shield inventory
+    def add_shield_inventory(self, shield):
+        self.inventory["shield"].append(shield)
+    
+    def remove_shield_inventory(self, shield):
+        self.inventory["shield"].remove(shield)
+
+    # special inventory
+    def add_special_inventory(self, special):
+        self.inventory["special"].append(special)
+
+    def remove_special_inventory(self, special):
+        self.inventory["special"].remove(special)
+
+    # show inventory contents
+    def show_inventory(self):
+        pass #todo
+        util.spacer(1)
+        print("Inventory")
+        print ("-------------------------")
+        for key in self.inventory:  # inventory types
+            print(key + " : ")
+            for key1 in self.inventory[key]: # inventory items
+                print(" - " + key1)
+        print ("-------------------------")
+        util.spacer(1)
+    
+
+    # equip/unequip handweapon
+    def set_hand_weapon(self, weapon):
+        if (self.equiped["hand-weapon"] != ""):
+            self.add_hand_weapon_inventory(self.equiped["hand-weapon"]) # put current equiped back to inventory before replacing
+            
+        self.equiped["hand-weapon"] = weapon # equip new weapon
+
+    # equip/unequip armour
+    def set_armour(self, armour):
+        if (self.equiped["armour"] != ""):
+            self.add_armour_inventory(self.equiped["armour"]) # put current equiped back to inventory before replacing
+            
+        self.equiped["armour"] = armour # equip new armour
+        
+    
+     # equip/unequip shield
+    def set_shield(self, shield):
+        if (self.equiped["shield"] != ""):
+            self.add_shield_inventory(self.equiped["shield"]) # put current equiped back to inventory before replacing
+            
+        self.equiped["shield"] = shield # equip new shield
+
+    # equip/unequip special
+    def set_special(self, special):
+        if (self.equiped["special"] != ""):
+            self.add_special_inventory(self.equiped["special"]) # put current equiped back to inventory before replacing
+            
+        self.equiped["special"] = special # equip new special
+
+    # show current equipment
+    def show_equipment(self):
+        util.spacer(1)
+        print("Currently Equipped")
+        print ("-------------------------")
+        for key in self.equiped:
+            print(key + " : " + self.equiped[key])
+        print ("-------------------------")
+        util.spacer(1)
         
     # set or change name
     def set_name(self, new_name):
         self.name = new_name
     # change wounds
     def change_wounds(self, number):
-        self.wounds += number
+        self.stats["wounds"] += number
     # change weapon skill
     def change_weapon_skill(self, number):
-        self.weapon_skill += number
+        self.stats["weapon_skill"] += number
     # change attacks
     def change_attacks(self, number):
-        self.attacks += number
+        self.stats["attacks"] += number
     # change strength
     def change_strength(self, number):
-        self.strength += number
+        self.stats["strength"] += number
     # change toughness
     def change_toughness(self, number):
-        self.toughness += number
+        self.stats["toughness"] += number
     # change armour_save
     def change_armour_save(self, number):
-        self.armour_save += number
+        self.stats["armour_save"] += number
     # change initiative
     def change_initiative(self, number):
-        self.initiative += number
-    # print stats
-    def print_stats(self):
-        util.spacer(1)
-        print("        Name : " + self.name)
-        print("      Wounds : " + str(self.wounds))
-        print("Weapon Skill : " + str(self.weapon_skill))
-        print("     Attacks : " + str(self.attacks))
-        print("    Strength : " + str(self.strength))
-        print("   Toughness : " + str(self.toughness))
-        print(" Armour Save : " + str(self.armour_save))
-        print("  Initiative : " + str(self.initiative))
-        util.spacer(1)
-    
+        self.stats["initiative"] += number
 
+    # print stats
+    def show_stats(self):
+        util.spacer(1)
+        print("Your stats")
+        util.spacer(1)
+        for key in self.stats:
+            print(key + " : " + str(self.stats[key]))
+        util.spacer(1)
+    #-------------------------------------------------------------------
+#-------------------------------------------------------------------
+    
+# human warrior sub class
+#-------------------------------------------------------------------
 class human_warrior(character):
     type_ = "Human Warrior"
-    wounds = 3
-    weapon_skill = 4
-    attacks = 1
-    strength = 3
-    toughness = 3
-    armour_save = 5
-    initiative = 7
+    stats = {
+        "wounds": 3,
+        "weapon_skill": 3,
+        "attacks": 1,
+        "strength": 3,
+        "toughness": 3,
+        "armour_save": 6,
+        "initiative": 7
+    }
+#-------------------------------------------------------------------
 
+# dwarven smith sub class
+#-------------------------------------------------------------------
 class dwarven_smith(character):
     type_ = "Dwarven Smith"
-    wounds = 4
-    weapon_skill = 5
-    attacks = 1
-    strength = 3
-    toughness = 4
-    armour_save = 4
-    initiative = 6
+    stats = {
+        "wounds": 4,
+        "weapon_skill": 4,
+        "attacks": 1,
+        "strength": 3,
+        "toughness": 4,
+        "armour_save": 5,
+        "initiative": 6
+    }
+#-------------------------------------------------------------------
 
+# elven_archer sub class
+#-------------------------------------------------------------------
 class elven_archer(character):
     type_ = "Elven Archer"
-    wounds = 3
-    weapon_skill = 5
-    attacks = 1
-    strength = 3
-    toughness = 3
-    armour_save = 6
-    initiative = 8
+    stats = {
+        "wounds": 3,
+        "weapon_skill": 4,
+        "attacks": 1,
+        "strength": 3,
+        "toughness": 3,
+        "armour_save": 6,
+        "initiative": 8
+    }
 #-------------------------------------------------------------------
 
 # return a list of available characters
@@ -122,6 +238,7 @@ def set_player_name(player):
     name = input("What is your characters name? > ")
     util.check_exit_game(name)
     player.set_name(name)
+    if(player.name.lower() == "exit"): set_player_name(player)
     util.spacer(1)
     print("Your character name has been set to ** " + player.name + " **")
 #-------------------------------------------------------------------
