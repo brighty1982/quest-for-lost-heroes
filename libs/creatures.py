@@ -89,7 +89,7 @@ def generate_foes():
 #-------------------------------------------------------------------
 def select_random_foe():
     creatures = generate_foes()
-    current_foe = random.choice(creatures)
+    current_foe = random.choice(creatures)()
     current_foe.show_stats()
     util.spacer(1)
     print ("Get ready to fight!")
